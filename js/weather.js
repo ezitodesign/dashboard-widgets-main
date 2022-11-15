@@ -21,7 +21,7 @@ fetch(url)
   
   // Template to output
   const template = `
-    <h1>Weather</h1>
+    <h1></h1>
     <data value="${data.name}" class="city">${data.name}</data>
     <data value="${data.main.temp}" class="temp">${data.main.temp}&#8457;</data>
     <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Placeholder">
@@ -31,3 +31,19 @@ fetch(url)
   weatherContainer.insertAdjacentHTML("afterbegin", template);
   
 });
+
+
+// Get Video
+const video = document.querySelector("video");
+
+// Navigator object
+if (navigator.mediaDevices.getUserMedia) {
+  
+  navigator.mediaDevices
+    .getUserMedia({
+      video: true
+    })
+    .then((stream) => (video.srcObject = stream))
+    .catch((error) => console.log(error));
+}
+
